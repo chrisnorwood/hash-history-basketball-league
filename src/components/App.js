@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Navbar from './Navbar'
 import Home from './Home'
 import Players from './Players'
@@ -10,10 +10,14 @@ function App() {
     <Router>
       <div>
         <Navbar />
+        
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/players' component={Players} />
+          <Route path='/teams' component={Teams} />
 
-        <Route path='/' exact component={Home} />
-        <Route path='/players' component={Players} />
-        <Route path='/teams' component={Teams} />
+          <Route render={() => <h1 className='text-center'>404</h1>} />
+        </Switch>
       </div>
     </Router>
   )
