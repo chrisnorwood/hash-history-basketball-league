@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import Home from './Home'
 import Players from './Players'
 import Teams from './Teams'
+import TeamPage from './TeamPage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/' exact component={Home} />
           <Route path='/players' component={Players} />
           <Route path='/teams' component={Teams} />
+          <Route path='/:teamId' exact component={TeamPage} />
 
           <Route render={() => <h1 className='text-center'>404</h1>} />
         </Switch>
