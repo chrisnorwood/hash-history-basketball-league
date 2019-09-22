@@ -2,6 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { getTeamsArticles } from '../api'
 import Sidebar from './Sidebar'
+import Article from './Article'
 
 export default function Articles (props) {
   const [teamsArticles, setTeamsArticles] = React.useState([])
@@ -28,5 +29,21 @@ export default function Articles (props) {
           list={teamsArticles}
           {...props}
         />
+
+        <Route path={`${url}/:articleId`} render={({ match }) => (
+          <Article
+            articleId={match.params.articleId}
+            teamId={teamId}
+          >
+            {(article) => !article ? <h1>LOADING</h1> : (
+              <div className='panel'>
+                <article className='article' key={article.id}>
+                  <h1 className='header'>{article.title}</h1>
+                  <p>{article.body}</p>
+                </article>
+              </div>
+            )}
+          </Article>
+        )} />
       </div>
 }
