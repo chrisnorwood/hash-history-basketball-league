@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { getTeamsArticles } from '../api'
+import Loading from './Loading'
 import Sidebar from './Sidebar'
 import Article from './Article'
 
@@ -21,7 +22,7 @@ export default function Articles (props) {
   }, [teamId])
 
   return loading === true
-    ? <h1>LOADING</h1>
+    ? <Loading />
     : <div className='container two-column'>
         <Sidebar
           loading={loading}
@@ -35,7 +36,7 @@ export default function Articles (props) {
             articleId={match.params.articleId}
             teamId={teamId}
           >
-            {(article) => !article ? <h1>LOADING</h1> : (
+            {(article) => !article ? <Loading /> : (
               <div className='panel'>
                 <article className='article' key={article.id}>
                   <h1 className='header'>{article.title}</h1>

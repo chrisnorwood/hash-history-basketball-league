@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import slug from 'slug'
+import Loading from './Loading'
 
 function CustomLink ({ to, children }) {
   return (
@@ -18,7 +19,7 @@ function CustomLink ({ to, children }) {
 
 export default function Sidebar ({ title, list, loading, location, match }) {
   return loading === true
-    ? <h1>LOADING</h1>
+    ? <Loading />
     : <div>
         <h3 className='header'>{title}</h3>
         <ul className='sidebar-list'>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import slug from 'slug'
 import { getTeamsArticles, getTeamNames } from '../api'
+import Loading from './Loading'
 import TeamLogo from './TeamLogo'
 import Team from './Team'
 
@@ -37,7 +38,7 @@ export default function TeamPage (props) {
     <div>
       <Team id={teamId}>
         {(team) => team === null
-          ? <h1>LOADING</h1>
+          ? <Loading />
           : <div className='panel'>
               <TeamLogo id={teamId} />
               <h1 className='medium-header'>{team.name}</h1>
